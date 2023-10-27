@@ -29,7 +29,8 @@ export class CategoryService {
 
   // Este método é semelhante ao getAll(), mas é usado para recuperar uma categoria específica com base em um ID fornecido como argumento. Ele também retorna um Observable de uma única instância de Category.
   getById(id: number): Observable<Category> {
-    const url - `${this.apiPath}/${id}`;
+    const url = `${this.apiPath}/${id}`;
+
     return this.http.get(url).pipe(
       catchError(this.handleError),
       map(this.jsonDataToCategory)
@@ -40,13 +41,14 @@ export class CategoryService {
   create(category: Category): Observable<Category> {
     return this.http.post(this.apiPath, category).pipe(
       catchError(this.handleError),
-      map(this.jsonDataToCategories)
+      map(this.jsonDataToCategory)
     )
   }
 
   // Este método é usado para atualizar uma categoria existente. Ele recebe um objeto Category como argumento e retorna um Observable que emite o objeto Category atualizado.
   update(category: Category): Observable<Category> {
     const url = `${this.apiPath}/${category.id}`;
+
     return this.http.put(url, category).pipe(
       catchError(this.handleError),
       map(() => category)
@@ -56,6 +58,7 @@ export class CategoryService {
   // Este método é usado para excluir uma categoria com base em seu ID. Ele retorna um Observable que não emite um valor útil, apenas confirma que a exclusão foi bem-sucedida.
   delete(id: number): Observable<any> {
     const url = `${this.apiPath}/${id}`;
+    
     return this.http.delete(url).pipe(
       catchError(this.handleError),
       map(() => null)
