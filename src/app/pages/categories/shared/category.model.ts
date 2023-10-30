@@ -1,7 +1,7 @@
 export class Category {
-    constructor(
-        public id?: number,
-        public name?: string,
-        public desciption?: string
-    ){}
+  constructor(
+    public id?:number,
+    public name?: string,
+    public description?: string
+  ){}
 }
