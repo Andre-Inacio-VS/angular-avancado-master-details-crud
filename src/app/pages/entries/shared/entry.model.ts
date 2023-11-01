@@ -21,6 +21,10 @@ export class Entry extends BaseResourceModel {
         revenue: 'Receita'
     };
 
+    static fromJason(jasonData: any): Entry {
+        return Object.assign(new Entry(), jasonData);
+    }
+
     get paidText(): string {
         return this.paid? 'Pago' : 'Pendente';
     }
