@@ -30,8 +30,7 @@
           <label for="type">Tipo</label>
 
           <select name="type" class="form-control" id="type" formControlName="type">
-            <option value="expense">Despesa</option>
-            <option value="revenue">Receieta</option>
+            <option *ngFor="let option of typeOptions" [value]="option.value">{{ option.text }}</option>
           </select>
 
           <div class="text-danger" *ngIf="entryForm.get('type').invalid && entryForm.get('type').touched">
@@ -90,7 +89,18 @@
             <div *ngIf="entryForm.get('paid').errors.required">dado obrigatório</div>
           </div>
         </div> <!-- paid -->
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-3">
+          <label for="categoryId">Categoria</label>
+
+          <select name="categoryId" class="form-control" id="categoryId" formControlName="categoryId">
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+          </select>
+
+          <div class="text-danger" *ngIf="entryForm.get('categoryId').invalid && entryForm.get('categoryId').touched">
+            <div *ngIf="entryForm.get('categoryId').errors.required">dado obrigatório</div>
+          </div>
+        </div><!-- categoryId -->
+        <div class="form-group col-md-7">
           <label for="description">Descrição</label>
           <input type="text" id="description" class="form-control" formControlName="description">
         </div><!-- description -->
