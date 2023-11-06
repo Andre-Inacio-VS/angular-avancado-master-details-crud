@@ -92,22 +92,19 @@
         </div><!-- categoryId -->
         <div class="form-group col-md-7">
           <label for="description">Descrição</label>
-          <input type="text" id="description" class="form-control" formControlName="description">
+          <input type="text" class="form-control" id="description" formControlName="description">
 
           <app-form-field-error [form-control]="resourceForm.get('description')"></app-form-field-error>
 
         </div><!-- description -->
       </div>
     </div>
+  </div>
 
-    <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
-      <strong>Erro no servidor:</strong>
-      <ul>
-        <li *ngFor="let error of serverErrorMessages">{{error}}</li>
-      </ul>
-    </div>
+  <app-server-error-messages [server-error-messages]="serverErrorMessages"></app-server-error-messages>
 
-    <button [disabled]="submittingForm || resourceForm.invalid" type="submit"
-      class="btn btn-primary btn-lg float-right mt-3">
-      Salvar
-    </button>
+  <button [disabled]="submittingForm || resourceForm.invalid" type="submit"
+    class="btn btn-primary btn-lg float-right mt-3">
+    Salvar
+  </button>
+</form>   
